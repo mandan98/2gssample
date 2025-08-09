@@ -124,3 +124,8 @@
     min-height: 320px;
   }
 }
+@media (max-width: 600px) {
+  #cart-bar span:first-child {
+    font-size: 1.3em !important;
+  }
+}
