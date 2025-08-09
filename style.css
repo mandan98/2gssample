@@ -51,7 +51,7 @@
 .about-bg {
   position: absolute;
   inset: 0;
-  background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80')
+  background: url('imgsrc/prd2.jpg') center/cover no-repeat;
     center/cover no-repeat;
   filter: blur(12px) brightness(0.7);
   z-index: 1;
@@ -110,6 +110,85 @@
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(30px);}
   to { opacity: 1; transform: translateY(0);}
+}
+
+#cart-bar span.cart-icon {
+  display: inline-block;
+  transition: transform 0.2s;
+}
+
+#cart-bar span.cart-icon:hover {
+  animation: cartWiggle 0.5s;
+}
+
+@keyframes cartWiggle {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-5px) rotate(-10deg);}
+  40% { transform: translateX(5px) rotate(10deg);}
+  60% { transform: translateX(-3px) rotate(-6deg);}
+  80% { transform: translateX(3px) rotate(6deg);}
+  100% { transform: translateX(0); }
+}
+
+/* Header Styles */
+header {
+  position: relative;
+  color: #fff;
+  padding: 1.5em 0 1em 0;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.13);
+  overflow: hidden;
+  background: linear-gradient(120deg, #aa2d2d 60%, #222 100%);
+  background-size: 200% 200%;
+  animation: headerGlow 1s ease-in-out infinite alternate, headerGradientMove 4s linear infinite;
+}
+
+@keyframes headerGlow {
+  0% {
+    box-shadow: 0 4px 15px rgba(170,45,45,0.13), 0 0 20px 4px #aa2d2d33;
+    filter: brightness(1);
+  }
+  50% {
+    box-shadow: 0 8px 32px rgba(170,45,45,0.25), 0 0 40px 8px #ff424277;
+    filter: brightness(1.08);
+  }
+  100% {
+    box-shadow: 0 4px 15px rgba(170,45,45,0.13), 0 0 20px 4px #aa2d2d33;
+    filter: brightness(1);
+  }
+}
+
+@keyframes headerGradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+header::before {
+  content: none;
+}
+
+header > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Body Background */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url('imgsrc/prd2.jpg') center/cover no-repeat;
+  filter: blur(5px) brightness(.95);
+  opacity: 5.55;
+  z-index: -1;
+  pointer-events: none;
 }
 
 /* Responsive */
