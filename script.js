@@ -77,3 +77,57 @@ num2.addEventListener('mouseleave', () => {
   num2.style.textShadow = "none";
 });
 
+// Make cart-bar draggable
+const cartBar = document.getElementById('cart-bar');
+let isDragging = false, offsetX = 0, offsetY = 0;
+
+cartBar.style.position = 'fixed';
+cartBar.style.cursor = 'grab';
+cartBar.style.top = '20px';
+cartBar.style.right = '20px';
+cartBar.style.left = 'unset';
+
+cartBar.addEventListener('mousedown', function(e) {
+  isDragging = true;
+  offsetX = e.clientX - cartBar.getBoundingClientRect().left;
+  offsetY = e.clientY - cartBar.getBoundingClientRect().top;
+  cartBar.style.cursor = 'grabbing';
+});
+
+document.addEventListener('mousemove', function(e) {
+  if (isDragging) {
+    cartBar.style.left = (e.clientX - offsetX) + 'px';
+    cartBar.style.top = (e.clientY - offsetY) + 'px';
+    cartBar.style.right = 'unset';
+  }
+});
+
+document.addEventListener('mouseup', function() {
+  isDragging = false;
+  cartBar.style.cursor = 'grab';
+});
+
+// Touch support for cart-bar (mobile)
+cartBar.addEventListener('touchstart', function(e) {
+  isDragging = true;
+  const touch = e.touches[0];
+  offsetX = touch.clientX - cartBar.getBoundingClientRect().left;
+  offsetY = touch.clientY - cartBar.getBoundingClientRect().top;
+  cartBar.style.cursor = 'grabbing';
+}, { passive: false });
+
+document.addEventListener('touchmove', function(e) {
+  if (isDragging) {
+    const touch = e.touches[0];
+    cartBar.style.left = (touch.clientX - offsetX) + 'px';
+    cartBar.style.top = (touch.clientY - offsetY) + 'px';
+    cartBar.style.right = 'unset';
+    e.preventDefault();
+  }
+}, { passive: false });
+
+document.addEventListener('touchend', function() {
+  isDragging = false;
+  cartBar.style.cursor = 'grab';
+});
+
