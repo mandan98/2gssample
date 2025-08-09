@@ -1,0 +1,126 @@
+.rainbow-hover {
+  transition: background 0.5s ease;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  color: #fff;
+}
+
+.rainbow-hover:hover {
+  background: linear-gradient(
+    270deg,
+    #ff0000,
+    #ff7f00,
+    #ffff00,
+    #00ff00,
+    #0000ff,
+    #4b0082,
+    #9400d3,
+    #ff0000
+  );
+  background-size: 1600% 1600%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbowAnimation 3s ease infinite;
+}
+
+@keyframes rainbowAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.about-section {
+  position: relative;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 3em 0 0 0;
+  overflow: hidden;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+}
+
+.about-bg {
+  position: absolute;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80')
+    center/cover no-repeat;
+  filter: blur(12px) brightness(0.7);
+  z-index: 1;
+}
+
+.about-content {
+  position: relative;
+  z-index: 2;
+  padding: 2.5em 2em;
+  max-width: 650px;
+  background: rgba(255, 255, 255, 0.13);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2px);
+}
+
+.about-title {
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  font-size: 2.2em;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #aa2d2d;
+  margin-bottom: 0.7em;
+  text-align: center;
+  text-shadow: 0 2px 12px rgba(255, 255, 255, 0.18);
+  animation: fadeInDown 1s cubic-bezier(.69, -0.2, .36, 1.5);
+}
+
+.about-text {
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  font-size: 1.18em;
+  color: #222;
+  line-height: 1.7;
+  text-align: center;
+  margin: 0;
+  letter-spacing: 0.1px;
+}
+
+.about-animate {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1.2s 0.3s cubic-bezier(.69,-0.2,.36,1.5) forwards;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .about-content {
+    padding: 1.2em 0.7em;
+  }
+  .about-title {
+    font-size: 1.3em;
+  }
+  .about-section {
+    min-height: 320px;
+  }
+}
